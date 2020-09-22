@@ -16,7 +16,7 @@ pub struct ComponentTypeId {
     pub ext_type_id: Option<u32>,
     /// string representation of component
     #[cfg(debug_assertions)]
-    name: &'static str,
+    pub name: &'static str,
 }
 
 impl ComponentTypeId {
