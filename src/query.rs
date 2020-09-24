@@ -97,7 +97,7 @@ pub use crate::internals::query::{
         read::Read, try_read::TryRead, try_write::TryWrite, write::Write, DefaultFilter, Fetch,
         IntoIndexableIter, ReadOnly, View,
     },
-    ChunkIter, ChunkView, IntoQuery, Query,
+    ChunkIter, ChunkView, IntoQuery, Query, QueryResult
 };
 
 #[cfg(feature = "parallel")]
