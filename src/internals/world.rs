@@ -359,7 +359,8 @@ impl World {
         &mut self.components
     }
 
-    pub(crate) fn archetypes(&self) -> &[Archetype] {
+    /// all archetypes
+    pub fn archetypes(&self) -> &[Archetype] {
         &self.archetypes
     }
 
