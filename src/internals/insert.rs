@@ -143,7 +143,8 @@ impl<'a, T: Component> ComponentWriter<'a, T> {
 
 /// Provides the ability to append new components to the entities in an archetype.
 pub struct UnknownComponentWriter<'a> {
-    components: &'a mut dyn UnknownComponentStorage,
+    /// para com isso
+    pub components: &'a mut dyn UnknownComponentStorage,
     archetype: ArchetypeIndex,
 }
 

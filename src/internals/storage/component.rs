@@ -44,7 +44,16 @@ impl std::hash::Hash for ComponentTypeId {
 
 impl PartialEq for ComponentTypeId {
     fn eq(&self, other: &Self) -> bool {
-        self.type_id.eq(&other.type_id)
+       
+        if let Some(ext_id) = self.ext_type_id {
+            if let Some(other_ext_id) = other.ext_type_id {
+                return self.type_id.eq(&other.type_id) && ext_id.eq(&other_ext_id)
+            }
+
+            return false
+        }
+        
+        return self.type_id.eq(&other.type_id)
     }
 }
 

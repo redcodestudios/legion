@@ -480,6 +480,8 @@ impl<T: Component> UnknownComponentStorage for PackedStorage<T> {
     fn get_raw(&self, ArchetypeIndex(archetype): ArchetypeIndex) -> Option<(*const u8, usize)> {
         let slice_index = *self.index.get(archetype as usize)?;
         let (ptr, len) = self.slices.get(slice_index)?;
+        println!("get_raw internals: {:?}", ptr);
+        println!("get maluco: {:?}", self.slices);
         Some((ptr.as_ptr() as *const u8, *len))
     }
 
@@ -502,6 +504,8 @@ impl<T: Component> UnknownComponentStorage for PackedStorage<T> {
         let slice_index = self.index[archetype as usize];
         let allocation = &mut self.allocations[slice_index];
         allocation.extend_memcopy(self.epoch, ptr as *const T, count);
+        println!("ptrrrrrr: {:?}", ptr);
+        println!("ptrrrrrr as const T: {:?}", ptr as *const T);
         self.slices[slice_index] = allocation.as_raw_slice();
         self.entity_len += count;
         *self.versions[slice_index].get() = next_component_version();
